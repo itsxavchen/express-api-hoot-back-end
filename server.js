@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 const testJWTRouter = require('./controllers/test-jwt');
 const usersRouter = require('./controllers/users');
 const profilesRouter = require('./controllers/profiles');
+const hootsRouter = require('./controllers/hoots.js');
 
 mongoose.connect(process.env.MONGODB_URI);
 
@@ -15,6 +16,7 @@ mongoose.connection.on('connected', () => {
 });
 app.use(cors());
 app.use(express.json());
+app.use('/hoots', hootsRouter);
 
 // Routes go here
 app.use('/test-jwt', testJWTRouter);
